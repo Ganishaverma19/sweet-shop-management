@@ -1,0 +1,44 @@
+table {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #f8f8f8;
+  text-align: left;
+}
+
+button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+button.primary {
+  background: #2563eb;
+  color: white;
+}
+
+button.danger {
+  background: #dc2626;
+  color: white;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+
+html, body, #root {
+  height: 100%;
+  background: #020617; 
+}
+

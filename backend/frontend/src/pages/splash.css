@@ -1,0 +1,64 @@
+/* SPLASH CONTAINER */
+.splash {
+  position: fixed;
+  inset: 0;
+  background: #020617;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  overflow: hidden;
+  padding: 16px; /* mobile safety */
+}
+
+/* GLOW EFFECT (RESPONSIVE) */
+.glow {
+  position: absolute;
+  width: clamp(220px, 60vw, 420px);
+  height: clamp(220px, 60vw, 420px);
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.22) 0%,   
+    rgba(180, 220, 255, 0.20) 20%,  
+    rgba(56, 189, 248, 0.14) 40%,  
+    rgba(2, 6, 23, 0.55) 65%,
+    rgba(2, 6, 23, 0.85) 85%,
+    rgba(2, 6, 23, 1) 100%
+  );
+
+  filter: blur(clamp(60px, 15vw, 100px));
+  z-index: 0;
+}
+
+/* LOGO TEXT */
+.splash-logo {
+  font-size: clamp(36px, 8vw, 72px);
+  font-weight: 900;
+  color: #ffffff;
+  z-index: 2;
+  position: relative;
+  text-align: center;
+  line-height: 1.1;
+}
+
+/* SUBTITLE */
+.splash-text {
+  margin-top: 10px;
+  font-size: clamp(13px, 3.5vw, 16px);
+  color: #cbd5f5;
+  font-weight: 500;
+  z-index: 2;
+  position: relative;
+  text-align: center;
+  max-width: 90%;
+}
+
+/* EXTRA SMALL DEVICES */
+@media (max-width: 360px) {
+  .splash-text {
+    margin-top: 6px;
+  }
+}
