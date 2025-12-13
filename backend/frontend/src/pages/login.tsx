@@ -1,78 +1,3 @@
-// import { useState ,useRef,useEffect} from "react";
-// import api from "../services/api";
-// import "./login.css"; 
-// import gsap from "gsap";
-  
-
-// function Login({ onLogin }: { onLogin: () => void }) {
-
-//    const cardRef = useRef<HTMLDivElement>(null);
-
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [error, setError] = useState("");
-    
-
- 
-// const handleLogin = async (e: React.FormEvent) => {
-//   e.preventDefault();
-//   setError("");
-
-//   try {
-//     const res = await api.post("/auth/login", { email, password });
-//     localStorage.setItem("token", res.data.token);
-
-//     document.body.classList.add("page-exit"); 
-
-//     setTimeout(() => {
-//       onLogin();
-//       document.body.classList.remove("page-exit");
-//     }, 500);
-//   } catch {
-//     setError("Invalid email or password");
-//   }
-// };
-
-
-//   return (
-//     <div className="login-page">
-//       <div className="login-card">
-//         <div className="login-header">
-//           <h1>🍬 Sweet Shop</h1>
-//           <p>Login to manage inventory</p>
-//         </div>
-
-//         <form onSubmit={handleLogin} className="login-form">
-//           <label>Email</label>
-//           <input
-//             type="email"
-//             value={email}
-//             onChange={(e) => setEmail(e.target.value)}
-//             placeholder="Enter your email"
-//             required
-//           />
-
-//           <label>Password</label>
-//           <input
-//             type="password"
-//             value={password}
-//             onChange={(e) => setPassword(e.target.value)}
-//             placeholder="Enter your password"
-//             required
-//           />
-
-//           {error && <div className="error-box">{error}</div>}
-
-//           <button type="submit">Login</button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Login;
-
-
 
 import { useState, useRef } from "react";
 import api from "../services/api";
@@ -170,9 +95,18 @@ function Login({ onLogin }: { onLogin: () => void }) {
       </div>
     </div>
   );
+
+
+
+
+
 }
 
 export default Login;
+
+
+
+
 
 
 
