@@ -4,6 +4,8 @@ import Dashboard from "./pages/Dashboard";
 import SplashScreen from "./pages/Splash";
 import { Toaster } from "react-hot-toast";
 import "./index.css";
+import { isAdmin } from "@/utils/auth";
+
 
 
 

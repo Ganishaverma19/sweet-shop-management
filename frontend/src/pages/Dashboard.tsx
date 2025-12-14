@@ -1,10 +1,12 @@
 
 import { useEffect, useState, useRef } from "react";
 import api from "../services/api";
-import { isAdmin } from "../utils/auth";
+import { isAdmin } from "@/utils/auth";
 import toast from "react-hot-toast";
 import "./Dashboard.css";
 import gsap from "gsap";
+
+
 
 interface Sweet {
   id: number;
