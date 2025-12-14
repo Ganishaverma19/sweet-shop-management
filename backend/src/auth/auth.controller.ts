@@ -43,17 +43,16 @@ export const register = async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Registration failed" });
   }
 };
-
-/* ===================== LOGIN ===================== */
 export const login = async (req: Request, res: Response) => {
   try {
+    console.log("LOGIN BODY:", req.body); // 👈 ADD THIS LINE
+
     let { email, password } = req.body;
 
     if (!email || !password) {
       return res.status(400).json({ message: "Email and password required" });
     }
 
-    
     email = email.toLowerCase().trim();
 
     const user = await prisma.user.findUnique({
@@ -64,10 +63,7 @@ export const login = async (req: Request, res: Response) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    const isPasswordCorrect = await bcrypt.compare(
-      password,
-      user.password
-    );
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
     if (!isPasswordCorrect) {
       return res.status(401).json({ message: "Invalid credentials" });
@@ -85,3 +81,4 @@ export const login = async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Login failed" });
   }
 };
+

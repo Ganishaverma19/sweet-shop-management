@@ -1,4 +1,3 @@
-
 import { useState, useRef } from "react";
 import api from "../services/api";
 import "./login.css";
@@ -18,24 +17,26 @@ function Login({ onLogin }: { onLogin: () => void }) {
     setError("");
     setLoading(true);
 
+    const payload = {
+      email: email.toLowerCase().trim(),
+      password: password,
+    };
+
     try {
       if (isRegister) {
-        // ✅ REGISTER
-        await api.post("/auth/register", { email, password });
+        await api.post("/auth/register", payload);
         setIsRegister(false);
         setPassword("");
         alert("Registration successful. Please login.");
       } else {
-        // ✅ LOGIN
-        const res = await api.post("/auth/login", { email, password });
+        const res = await api.post("/auth/login", payload);
+
+        // 🔐 SAVE TOKEN FIRST (CRITICAL)
         localStorage.setItem("token", res.data.token);
+        console.log("TOKEN SAVED:", res.data.token);
 
-        document.body.classList.add("page-exit");
-
-        setTimeout(() => {
-          onLogin();
-          document.body.classList.remove("page-exit");
-        }, 400);
+        // ✅ Navigate immediately (NO delay)
+        onLogin();
       }
     } catch (err: any) {
       setError(
@@ -52,11 +53,7 @@ function Login({ onLogin }: { onLogin: () => void }) {
       <div className="login-card" ref={cardRef}>
         <div className="login-header">
           <h1>🍬 Sweet Shop</h1>
-          <p>
-            {isRegister
-              ? "Create your account"
-              : "Login to manage inventory"}
-          </p>
+          <p>{isRegister ? "Create your account" : "Login to manage inventory"}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="login-form">
@@ -85,28 +82,21 @@ function Login({ onLogin }: { onLogin: () => void }) {
           </button>
         </form>
 
-        {/* 🔁 TOGGLE */}
         <div className="login-toggle">
           {isRegister ? "Already have an account?" : "New user?"}{" "}
-          <span onClick={() => setIsRegister(!isRegister)}>
+          <span
+            onClick={() => {
+              setIsRegister(!isRegister);
+              setError("");
+              setPassword("");
+            }}
+          >
             {isRegister ? "Login" : "Register"}
           </span>
         </div>
       </div>
     </div>
   );
-
-
-
-
-
 }
 
 export default Login;
-
-
-
-
-
-
-
