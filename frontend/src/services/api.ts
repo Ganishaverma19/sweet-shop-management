@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://sweet-shop-management-g4qz.onrender.com",
 });
 
 // ✅ REQUEST INTERCEPTOR → attach token
